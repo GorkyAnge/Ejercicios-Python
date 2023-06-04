@@ -1,58 +1,24 @@
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+def bubble_sort(my_list):
+    n = len(my_list)
 
-class BinarySearchTree:
-    def __init__(self):
-        self.root = None
+    for i in range(n - 1, 0, -1):
+        for j in range(i):
+            if my_list[j] > my_list[j + 1]:
+                # Swap elements
+                my_list[j], my_list[j + 1] = my_list[j + 1], my_list[j]
 
-    def insert(self, value):
-        new_node = Node(value)
-        if self.root is None:
-            self.root = new_node
-            return True
-        temp = self.root
-        while True:
-            if new_node.value == temp.value:
-                return False
-            if new_node.value < temp.value:
-                if temp.left is None:
-                    temp.left = new_node
-                    return True
-                temp = temp.left
-            else:
-                if temp.right is None:
-                    temp.right = new_node
-                    return True
-                temp = temp.right
-
-    def r_contains(self, value):
-        return self.__r_contains(self.root, value)
-
-    def __r_contains(self, node, value):
-        if node is None:
-            return False
-        if value == node.value:
-            return True
-        if value < node.value:
-            return self.__r_contains(node.left, value)
-        if value > node.value:
-            return self.__r_contains(node.right, value)
+    return my_list
 
 
-my_tree = BinarySearchTree()
-my_tree.insert(47)
-my_tree.insert(21)
-my_tree.insert(76)
-my_tree.insert(18)
-my_tree.insert(27)
-my_tree.insert(52)
-my_tree.insert(82)
 
-print('BST Contains 27:')
-print(my_tree.r_contains(27))
 
-print('\nBST Contains 17:')
-print(my_tree.r_contains(17))
+print(bubble_sort([4,2,6,5,1,3]))
+
+ 
+ 
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    [1, 2, 3, 4, 5, 6]
+    
+ """
