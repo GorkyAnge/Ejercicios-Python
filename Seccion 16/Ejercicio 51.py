@@ -30,9 +30,12 @@ class HashTable:
         all_keys = []
         for item in self.data_map:
             if item is not None:
-                for pair in item:
-                    all_keys.append(pair[0])
+                for key_value in item:
+                    all_keys.append(key_value[0])
         return all_keys
+
+
+
 
 
 my_hash_table = HashTable()
@@ -42,6 +45,8 @@ my_hash_table.set_item('washers', 50)
 my_hash_table.set_item('lumber', 70)
 
 print(my_hash_table.keys())
+
+
 
 """
     EXPECTED OUTPUT:
